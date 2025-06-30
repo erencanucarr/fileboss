@@ -1,0 +1,258 @@
+{
+  "templates": {
+    "photo_naming": {
+      "name": "Fotoğraf Adlandırma",
+      "description": "Fotoğraflar için tarih-saat bazlı adlandırma",
+      "template": "IMG_{date}_{time}_{counter}{ext}",
+      "example": "IMG_2024-01-15_14-30-25_001.jpg",
+      "category": "photography",
+      "icon": "camera"
+    },
+    "document_archive": {
+      "name": "Belge Arşivleme",
+      "description": "Belgeler için kronolojik arşivleme sistemi",
+      "template": "{year}-{month}-{day}_{name}_{size}KB{ext}",
+      "example": "2024-01-15_rapor_1024KB.pdf",
+      "category": "documents",
+      "icon": "file-alt"
+    },
+    "video_series": {
+      "name": "Video Seri",
+      "description": "Video dosyaları için seri numaralama",
+      "template": "Episode_{counter:03d}_{name}{ext}",
+      "example": "Episode_001_intro.mp4",
+      "category": "video",
+      "icon": "video"
+    },
+    "music_collection": {
+      "name": "Müzik Koleksiyonu",
+      "description": "Müzik dosyaları için standart adlandırma",
+      "template": "{counter:02d}_{name}_{size}MB{ext}",
+      "example": "01_song_5MB.mp3",
+      "category": "audio",
+      "icon": "music"
+    },
+    "backup_files": {
+      "name": "Yedek Dosyaları",
+      "description": "Yedekleme için timestamp'li adlandırma",
+      "template": "{name}_backup_{date}_{time}{ext}",
+      "example": "project_backup_2024-01-15_14-30.zip",
+      "category": "backup",
+      "icon": "save"
+    },
+    "project_versioning": {
+      "name": "Proje Versiyonlama",
+      "description": "Proje dosyaları için versiyon kontrolü",
+      "template": "{name}_v{counter}_{date}{ext}",
+      "example": "project_v1_2024-01-15.zip",
+      "category": "development",
+      "icon": "code-branch"
+    },
+    "sequential_numbering": {
+      "name": "Sıralı Numaralama",
+      "description": "Basit sıralı dosya numaralama",
+      "template": "{counter:04d}_{name}{ext}",
+      "example": "0001_dosya.txt",
+      "category": "general",
+      "icon": "list-ol"
+    },
+    "date_prefix": {
+      "name": "Tarih Öneki",
+      "description": "Tarih ile başlayan dosya adları",
+      "template": "{date}_{name}{ext}",
+      "example": "2024-01-15_rapor.docx",
+      "category": "general",
+      "icon": "calendar"
+    },
+    "size_category": {
+      "name": "Boyut Kategorisi",
+      "description": "Dosya boyutuna göre kategorileme",
+      "template": "{size_category}_{name}_{counter}{ext}",
+      "example": "LARGE_video_001.mp4",
+      "category": "organization",
+      "icon": "chart-bar"
+    },
+    "random_hash": {
+      "name": "Rastgele Hash",
+      "description": "Güvenlik için rastgele hash kodları",
+      "template": "{hash8}_{name}{ext}",
+      "example": "a1b2c3d4_secret.txt",
+      "category": "security",
+      "icon": "lock"
+    },
+    "professional_docs": {
+      "name": "Profesyonel Belgeler",
+      "description": "İş belgeler için formal adlandırma",
+      "template": "{company}_{type}_{date}_{counter:03d}{ext}",
+      "example": "ACME_REPORT_2024-01-15_001.pdf",
+      "category": "business",
+      "icon": "briefcase"
+    },
+    "academic_papers": {
+      "name": "Akademik Makaleler",
+      "description": "Akademik çalışmalar için referans sistemi",
+      "template": "{year}_{author}_{title}_{journal}{ext}",
+      "example": "2024_Smith_AI_Research_Nature.pdf",
+      "category": "academic",
+      "icon": "graduation-cap"
+    }
+  },
+  "categories": {
+    "photography": {
+      "name": "Fotoğrafçılık",
+      "color": "#e74c3c",
+      "icon": "camera"
+    },
+    "documents": {
+      "name": "Belgeler",
+      "color": "#3498db",
+      "icon": "file-alt"
+    },
+    "video": {
+      "name": "Video",
+      "color": "#9b59b6",
+      "icon": "video"
+    },
+    "audio": {
+      "name": "Ses",
+      "color": "#1abc9c",
+      "icon": "music"
+    },
+    "backup": {
+      "name": "Yedekleme",
+      "color": "#f39c12",
+      "icon": "save"
+    },
+    "development": {
+      "name": "Geliştirme",
+      "color": "#2ecc71",
+      "icon": "code"
+    },
+    "general": {
+      "name": "Genel",
+      "color": "#95a5a6",
+      "icon": "folder"
+    },
+    "organization": {
+      "name": "Organizasyon",
+      "color": "#e67e22",
+      "icon": "sitemap"
+    },
+    "security": {
+      "name": "Güvenlik",
+      "color": "#c0392b",
+      "icon": "shield-alt"
+    },
+    "business": {
+      "name": "İş",
+      "color": "#34495e",
+      "icon": "briefcase"
+    },
+    "academic": {
+      "name": "Akademik",
+      "color": "#8e44ad",
+      "icon": "university"
+    }
+  },
+  "variables": {
+    "name": {
+      "description": "Orijinal dosya adı (uzantısız)",
+      "example": "dosya"
+    },
+    "ext": {
+      "description": "Dosya uzantısı",
+      "example": ".jpg"
+    },
+    "counter": {
+      "description": "Artan sayı",
+      "example": "1, 2, 3...",
+      "format": "counter:03d (sıfır ile doldurma)"
+    },
+    "index": {
+      "description": "Liste sırası",
+      "example": "1, 2, 3..."
+    },
+    "date": {
+      "description": "Dosya tarihi (YYYY-MM-DD)",
+      "example": "2024-01-15"
+    },
+    "time": {
+      "description": "Dosya saati (HH-MM-SS)",
+      "example": "14-30-25"
+    },
+    "year": {
+      "description": "Yıl",
+      "example": "2024"
+    },
+    "month": {
+      "description": "Ay",
+      "example": "01"
+    },
+    "day": {
+      "description": "Gün",
+      "example": "15"
+    },
+    "size": {
+      "description": "Dosya boyutu (byte)",
+      "example": "1024"
+    },
+    "size_kb": {
+      "description": "Dosya boyutu (KB)",
+      "example": "1024"
+    },
+    "size_mb": {
+      "description": "Dosya boyutu (MB)",
+      "example": "1"
+    },
+    "size_category": {
+      "description": "Boyut kategorisi",
+      "example": "SMALL, MEDIUM, LARGE"
+    },
+    "hash8": {
+      "description": "8 karakterlik rastgele hash",
+      "example": "a1b2c3d4"
+    },
+    "hash16": {
+      "description": "16 karakterlik rastgele hash",
+      "example": "a1b2c3d4e5f6g7h8"
+    },
+    "uuid": {
+      "description": "Benzersiz UUID",
+      "example": "550e8400-e29b-41d4-a716-446655440000"
+    },
+    "timestamp": {
+      "description": "Unix timestamp",
+      "example": "1705320625"
+    },
+    "weekday": {
+      "description": "Haftanın günü",
+      "example": "Monday"
+    },
+    "season": {
+      "description": "Mevsim",
+      "example": "Winter"
+    }
+  },
+  "presets": {
+    "bulk_rename": {
+      "name": "Toplu Yeniden Adlandırma",
+      "templates": ["sequential_numbering", "date_prefix"],
+      "description": "Hızlı toplu yeniden adlandırma için temel şablonlar"
+    },
+    "media_organization": {
+      "name": "Medya Organizasyonu",
+      "templates": ["photo_naming", "video_series", "music_collection"],
+      "description": "Fotoğraf, video ve müzik dosyaları için organizasyon"
+    },
+    "document_management": {
+      "name": "Belge Yönetimi",
+      "templates": ["document_archive", "professional_docs", "backup_files"],
+      "description": "Belge ve arşiv yönetimi için şablonlar"
+    },
+    "development_workflow": {
+      "name": "Geliştirme İş Akışı",
+      "templates": ["project_versioning", "backup_files", "random_hash"],
+      "description": "Yazılım geliştirme projeler için şablonlar"
+    }
+  }
+} 

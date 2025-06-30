@@ -1,0 +1,223 @@
+{
+  "meta": {
+    "language": "English",
+    "code": "en",
+    "flag": "🇺🇸",
+    "rtl": false,
+    "completed": 100,
+    "contributors": ["Fileboss Team"]
+  },
+  "app": {
+    "title": "Fileboss v2.0",
+    "subtitle": "Advanced File Extension Changer",
+    "description": "Change file extensions easily and safely"
+  },
+  "header": {
+    "features": {
+      "regex": "REGEX",
+      "filtering": "Filtering", 
+      "templates": "Templates"
+    },
+    "buttons": {
+      "theme": "Toggle Theme",
+      "help": "Help"
+    }
+  },
+  "steps": {
+    "step1": "Select Folder",
+    "step2": "Configure Settings",
+    "step3": "Preview & Process"
+  },
+  "folderSelection": {
+    "title": "Folder Selection",
+    "description": "Select the folder you want to process",
+    "dropZone": {
+      "title": "Drag folder here",
+      "subtitle": "or enter path manually below",
+      "dragOver": "Drop folder!"
+    },
+    "input": {
+      "placeholder": "Enter folder path (e.g: C:\\Documents\\Pictures)",
+      "browse": "Browse",
+      "loadFiles": "Load Files"
+    }
+  },
+  "modes": {
+    "title": "Operation Mode",
+    "extension": {
+      "title": "Change Extension",
+      "description": "Change file extensions"
+    },
+    "regex": {
+      "title": "Use REGEX",
+      "description": "Replace with regular expressions"
+    },
+    "template": {
+      "title": "Use Templates", 
+      "description": "Rename with custom templates"
+    }
+  },
+  "extensionSettings": {
+    "title": "Extension Settings",
+    "oldExtension": "Current Extension",
+    "newExtension": "New Extension",
+    "quickSelection": "Quick Selection:",
+    "caseSensitive": "Case sensitive"
+  },
+  "regexSettings": {
+    "title": "REGEX Settings",
+    "searchPattern": "Search Pattern (REGEX)",
+    "searchPatternHelp": "e.g: (.+)\\.txt$ - all .txt files",
+    "replacePattern": "Replace Pattern",
+    "replacePatternHelp": "e.g: $1.doc - change extension to .doc",
+    "examples": "Example Patterns:",
+    "examplePatterns": {
+      "txtToDoc": "txt → doc",
+      "imgToPhoto": "IMG_ → Photo_",
+      "oldToNew": "_old → _new"
+    }
+  },
+  "templateSettings": {
+    "title": "Template Settings",
+    "namingTemplate": "Naming Template",
+    "templateHelp": "Variables: {name} {counter} {index} {date} {size} {ext}",
+    "startIndex": "Start Index",
+    "examples": "Example Templates:",
+    "testTemplate": "Test Template"
+  },
+  "filters": {
+    "title": "Advanced Filters",
+    "toggle": "Show/Hide",
+    "hide": "Hide",
+    "fileSize": "File Size",
+    "dateRange": "Date Range",
+    "namePattern": "File Name Pattern",
+    "namePatternPlaceholder": "*.jpg or regex",
+    "useRegex": "Use REGEX",
+    "sorting": "Sorting",
+    "sortBy": {
+      "name": "By name",
+      "size": "By size", 
+      "date": "By date"
+    },
+    "descending": "Descending",
+    "includeHidden": "Include hidden files",
+    "includeSubfolders": "Include subfolders",
+    "createBackup": "Create backup"
+  },
+  "preview": {
+    "title": "Preview",
+    "stats": {
+      "filesSelected": "files selected",
+      "totalSize": "total size",
+      "matching": "matching"
+    },
+    "empty": "No matching files found"
+  },
+  "buttons": {
+    "back": "Back",
+    "previewChanges": "Preview Changes",
+    "backToFolder": "Back to Folder",
+    "backToSettings": "Back to Settings",
+    "processFiles": "Start Process",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "close": "Close",
+    "export": "Export",
+    "understood": "Understood"
+  },
+  "results": {
+    "title": "Process Result",
+    "stats": {
+      "processedFiles": "Processed Files",
+      "errors": "Errors",
+      "skipped": "Skipped",
+      "duration": "Duration"
+    },
+    "backup": "Backup:",
+    "errorsTitle": "Errors:",
+    "exportResults": "Export Results"
+  },
+  "templateTest": {
+    "title": "Template Test Result",
+    "preview": "Template Preview",
+    "files": "files"
+  },
+  "help": {
+    "title": "Help & Guide",
+    "extensionChange": {
+      "title": "Extension Change",
+      "description": "Allows you to change the extension of all files with a specific extension.",
+      "examples": [
+        "Current extension: .txt",
+        "New extension: .doc", 
+        "Result: file.txt → file.doc"
+      ]
+    },
+    "regexUsage": {
+      "title": "REGEX Usage",
+      "description": "You can perform complex search and replace operations with regular expressions.",
+      "examples": [
+        "Search: ^(.+)\\.txt$",
+        "Replace: $1.doc",
+        "Result: file.txt → file.doc"
+      ]
+    },
+    "templateVariables": {
+      "title": "Template Variables",
+      "description": "Variables you can use in file naming:",
+      "variables": [
+        "{name} - Original file name (without extension)",
+        "{counter} - Incremental number (1, 2, 3...)",
+        "{index} - List order",
+        "{ext} - File extension",
+        "{date} - File date (YYYY-MM-DD)",
+        "{time} - File time (HH-MM-SS)",
+        "{year} - Year",
+        "{month} - Month",
+        "{day} - Day",
+        "{size} - File size (bytes)"
+      ]
+    },
+    "shortcuts": {
+      "title": "Keyboard Shortcuts",
+      "list": [
+        "Ctrl + Enter - Start process",
+        "F1 - Open help",
+        "Escape - Close modals",
+        "Ctrl + D - Dark theme"
+      ]
+    }
+  },
+  "notifications": {
+    "folderRequired": "Folder path is required!",
+    "extensionsRequired": "Old and new extensions are required!",
+    "regexRequired": "REGEX pattern and replace pattern are required!",
+    "templateRequired": "Naming template is required!",
+    "invalidRegex": "Invalid REGEX pattern!",
+    "filesLoaded": "files loaded!",
+    "previewFirst": "Preview changes first!",
+    "enterTemplate": "Enter a template first!",
+    "loadFilesFirst": "Load files first!",
+    "fileLoadError": "File loading error:",
+    "folderNotFound": "Folder not found!",
+    "serverError": "Server error!",
+    "previewError": "Preview error:",
+    "processError": "Process error:",
+    "templateTestError": "Template test error:",
+    "folderSelected": "Folder selected:",
+    "folderDropped": "Folder dropped:",
+    "fileDropped": "File folder detected:",
+    "dropInstructions": "Please drag a folder or use the \"Browse\" button"
+  },
+  "loading": {
+    "default": "Processing...",
+    "loadingFiles": "Loading files...",
+    "preparingPreview": "Preparing preview...",
+    "processingFiles": "Processing files...",
+    "testingTemplate": "Testing template..."
+  },
+  "confirm": {
+    "processFiles": "files will be processed. Do you want to continue?"
+  }
+} 

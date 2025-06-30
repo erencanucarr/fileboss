@@ -1,0 +1,223 @@
+{
+  "meta": {
+    "language": "Türkçe",
+    "code": "tr",
+    "flag": "🇹🇷",
+    "rtl": false,
+    "completed": 100,
+    "contributors": ["Fileboss Team"]
+  },
+  "app": {
+    "title": "Fileboss v2.0",
+    "subtitle": "Gelişmiş Dosya Uzantısı Değiştirici",
+    "description": "Dosya uzantılarını kolayca ve güvenli bir şekilde değiştirin"
+  },
+  "header": {
+    "features": {
+      "regex": "REGEX",
+      "filtering": "Filtreleme", 
+      "templates": "Şablonlar"
+    },
+    "buttons": {
+      "theme": "Tema Değiştir",
+      "help": "Yardım"
+    }
+  },
+  "steps": {
+    "step1": "Klasör Seç",
+    "step2": "Ayarları Yapılandır",
+    "step3": "Önizleme & İşle"
+  },
+  "folderSelection": {
+    "title": "Klasör Seçimi",
+    "description": "İşlem yapmak istediğiniz klasörü seçin",
+    "dropZone": {
+      "title": "Klasörü buraya sürükleyin",
+      "subtitle": "veya aşağıdan manuel olarak yol girin",
+      "dragOver": "Klasörü bırakın!"
+    },
+    "input": {
+      "placeholder": "Klasör yolunu girin (örn: C:\\Belgelerim\\Resimler)",
+      "browse": "Gözat",
+      "loadFiles": "Dosyaları Listele"
+    }
+  },
+  "modes": {
+    "title": "İşlem Modu",
+    "extension": {
+      "title": "Uzantı Değiştir",
+      "description": "Dosya uzantılarını değiştir"
+    },
+    "regex": {
+      "title": "REGEX Kullan",
+      "description": "Düzenli ifadeler ile değiştir"
+    },
+    "template": {
+      "title": "Şablon Kullan", 
+      "description": "Özel şablonlar ile yeniden adlandır"
+    }
+  },
+  "extensionSettings": {
+    "title": "Uzantı Ayarları",
+    "oldExtension": "Mevcut Uzantı",
+    "newExtension": "Yeni Uzantı",
+    "quickSelection": "Hızlı Seçim:",
+    "caseSensitive": "Büyük/küçük harf duyarlı"
+  },
+  "regexSettings": {
+    "title": "REGEX Ayarları",
+    "searchPattern": "Arama Deseni (REGEX)",
+    "searchPatternHelp": "Örn: (.+)\\.txt$ - tüm .txt dosyaları",
+    "replacePattern": "Değiştirme Deseni",
+    "replacePatternHelp": "Örn: $1.doc - uzantıyı .doc yap",
+    "examples": "Örnek Desenler:",
+    "examplePatterns": {
+      "txtToDoc": "txt → doc",
+      "imgToPhoto": "IMG_ → Foto_",
+      "oldToNew": "_old → _new"
+    }
+  },
+  "templateSettings": {
+    "title": "Şablon Ayarları",
+    "namingTemplate": "İsimlendirme Şablonu",
+    "templateHelp": "Değişkenler: {name} {counter} {index} {date} {size} {ext}",
+    "startIndex": "Başlangıç Sayısı",
+    "examples": "Örnek Şablonlar:",
+    "testTemplate": "Şablonu Test Et"
+  },
+  "filters": {
+    "title": "Gelişmiş Filtreler",
+    "toggle": "Göster/Gizle",
+    "hide": "Gizle",
+    "fileSize": "Dosya Boyutu",
+    "dateRange": "Tarih Aralığı",
+    "namePattern": "Dosya Adı Deseni",
+    "namePatternPlaceholder": "*.jpg veya regex",
+    "useRegex": "REGEX kullan",
+    "sorting": "Sıralama",
+    "sortBy": {
+      "name": "İsme göre",
+      "size": "Boyuta göre", 
+      "date": "Tarihe göre"
+    },
+    "descending": "Azalan",
+    "includeHidden": "Gizli dosyaları dahil et",
+    "includeSubfolders": "Alt klasörleri dahil et",
+    "createBackup": "Yedek oluştur"
+  },
+  "preview": {
+    "title": "Önizleme",
+    "stats": {
+      "filesSelected": "dosya seçildi",
+      "totalSize": "toplam boyut",
+      "matching": "eşleşen"
+    },
+    "empty": "Eşleşen dosya bulunamadı"
+  },
+  "buttons": {
+    "back": "Geri",
+    "previewChanges": "Değişiklikleri Önizle",
+    "backToFolder": "Klasöre Dön",
+    "backToSettings": "Ayarlara Dön",
+    "processFiles": "İşlemi Başlat",
+    "ok": "Tamam",
+    "cancel": "İptal",
+    "close": "Kapat",
+    "export": "Dışa Aktar",
+    "understood": "Anladım"
+  },
+  "results": {
+    "title": "İşlem Sonucu",
+    "stats": {
+      "processedFiles": "İşlenen Dosya",
+      "errors": "Hata",
+      "skipped": "Atlanan",
+      "duration": "Süre"
+    },
+    "backup": "Yedek:",
+    "errorsTitle": "Hatalar:",
+    "exportResults": "Sonuçları Dışa Aktar"
+  },
+  "templateTest": {
+    "title": "Şablon Test Sonucu",
+    "preview": "Şablon Önizlemesi",
+    "files": "dosya"
+  },
+  "help": {
+    "title": "Yardım & Kılavuz",
+    "extensionChange": {
+      "title": "Uzantı Değiştirme",
+      "description": "Belirli uzantıdaki tüm dosyaların uzantısını değiştirmenizi sağlar.",
+      "examples": [
+        "Mevcut uzantı: .txt",
+        "Yeni uzantı: .doc", 
+        "Sonuç: dosya.txt → dosya.doc"
+      ]
+    },
+    "regexUsage": {
+      "title": "REGEX Kullanımı",
+      "description": "Düzenli ifadeler ile karmaşık arama ve değiştirme işlemleri yapabilirsiniz.",
+      "examples": [
+        "Arama: ^(.+)\\.txt$",
+        "Değiştir: $1.doc",
+        "Sonuç: dosya.txt → dosya.doc"
+      ]
+    },
+    "templateVariables": {
+      "title": "Şablon Değişkenleri",
+      "description": "Dosya isimlendirmede kullanabileceğiniz değişkenler:",
+      "variables": [
+        "{name} - Orijinal dosya adı (uzantısız)",
+        "{counter} - Artan sayı (1, 2, 3...)",
+        "{index} - Liste sırası",
+        "{ext} - Dosya uzantısı",
+        "{date} - Dosya tarihi (YYYY-MM-DD)",
+        "{time} - Dosya saati (HH-MM-SS)",
+        "{year} - Yıl",
+        "{month} - Ay",
+        "{day} - Gün",
+        "{size} - Dosya boyutu (byte)"
+      ]
+    },
+    "shortcuts": {
+      "title": "Klavye Kısayolları",
+      "list": [
+        "Ctrl + Enter - İşlemi başlat",
+        "F1 - Yardımı aç",
+        "Escape - Modal'ları kapat",
+        "Ctrl + D - Koyu tema"
+      ]
+    }
+  },
+  "notifications": {
+    "folderRequired": "Klasör yolu gerekli!",
+    "extensionsRequired": "Eski ve yeni uzantı gerekli!",
+    "regexRequired": "REGEX deseni ve değiştirme deseni gerekli!",
+    "templateRequired": "İsimlendirme şablonu gerekli!",
+    "invalidRegex": "Geçersiz REGEX deseni!",
+    "filesLoaded": "dosya yüklendi!",
+    "previewFirst": "Önce değişiklikleri önizleyin!",
+    "enterTemplate": "Önce bir şablon girin!",
+    "loadFilesFirst": "Önce dosyaları yükleyin!",
+    "fileLoadError": "Dosya yükleme hatası:",
+    "folderNotFound": "Klasör bulunamadı!",
+    "serverError": "Server hatası!",
+    "previewError": "Önizleme hatası:",
+    "processError": "İşlem hatası:",
+    "templateTestError": "Şablon test hatası:",
+    "folderSelected": "Klasör seçildi:",
+    "folderDropped": "Klasör sürüklendi:",
+    "fileDropped": "Dosya klasörü algılandı:",
+    "dropInstructions": "Lütfen bir klasör sürükleyin veya \"Gözat\" butonunu kullanın"
+  },
+  "loading": {
+    "default": "İşlem yapılıyor...",
+    "loadingFiles": "Dosyalar yükleniyor...",
+    "preparingPreview": "Önizleme hazırlanıyor...",
+    "processingFiles": "Dosyalar işleniyor...",
+    "testingTemplate": "Şablon test ediliyor..."
+  },
+  "confirm": {
+    "processFiles": "dosya işlenecek. Devam etmek istiyor musunuz?"
+  }
+} 

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fileboss v2.0 - Gelişmiş Dosya Uzantısı Değiştirici</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-file-signature"></i>
+                    <h1>Fileboss <span class="version">v2.0</span></h1>
+                    <span class="subtitle">Gelişmiş Dosya Uzantısı Değiştirici</span>
+                </div>
+                <div class="header-actions">
+                    <div class="feature-badges">
+                        <span class="badge badge-primary"><i class="fas fa-code"></i> REGEX</span>
+                        <span class="badge badge-secondary"><i class="fas fa-filter"></i> Filtreleme</span>
+                        <span class="badge badge-accent"><i class="fas fa-magic"></i> Şablonlar</span>
+                    </div>
+                    <div id="language-selector" class="language-selector" style="display: none;">
+                        <!-- Dil seçici buraya dinamik olarak yüklenecek -->
+                    </div>
+                    <button id="theme-toggle" class="btn btn-icon" aria-label="Tema Değiştir">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="help-btn" class="btn btn-icon" aria-label="Yardım">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Progress Steps -->
+        <div class="progress-container">
+            <div class="step-indicator">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Klasör Seç</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Ayarları Yapılandır</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Önizleme & İşle</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Step 1: Folder Selection -->
+            <section id="step-1" class="step-section active">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-folder-open"></i> Klasör Seçimi</h2>
+                        <p>İşlem yapmak istediğiniz klasörü seçin</p>
+                    </div>
+                    <div class="card-body">
+                        <div id="drop-zone" class="drop-zone">
+                            <div class="drop-zone-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h3>Klasörü buraya sürükleyin</h3>
+                                <p>veya aşağıdan manuel olarak yol girin</p>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <input type="text" id="folder-path" placeholder="Klasör yolunu girin (örn: C:\Belgelerim\Resimler)" class="input">
+                            <button id="browse-folder" class="btn btn-primary">
+                                <i class="fas fa-folder"></i> Gözat
+                            </button>
+                        </div>
+
+                        <div class="action-group">
+                            <button id="load-files" class="btn btn-primary btn-large" disabled>
+                                <i class="fas fa-search"></i> Dosyaları Listele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Configuration -->
+            <section id="step-2" class="step-section">
+                <div class="row">
+                    <!-- Mode Selection -->
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2><i class="fas fa-cogs"></i> İşlem Modu</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="mode-selector">
+                                    <div class="mode-option active" data-mode="extension">
+                                        <i class="fas fa-file-alt"></i>
+                                        <h3>Uzantı Değiştir</h3>
+                                        <p>Dosya uzantılarını değiştir</p>
+                                    </div>
+                                    <div class="mode-option" data-mode="regex">
+                                        <i class="fas fa-code"></i>
+                                        <h3>REGEX Kullan</h3>
+                                        <p>Düzenli ifadeler ile değiştir</p>
+                                    </div>
+                                    <div class="mode-option" data-mode="template">
+                                        <i class="fas fa-magic"></i>
+                                        <h3>Şablon Kullan</h3>
+                                        <p>Özel şablonlar ile yeniden adlandır</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Extension Mode Settings -->
+                    <div class="col-md-6" id="extension-settings">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-file-alt"></i> Uzantı Ayarları</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="old-extension">Mevcut Uzantı</label>
+                                    <input type="text" id="old-extension" placeholder=".txt" class="input">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="new-extension">Yeni Uzantı</label>
+                                    <input type="text" id="new-extension" placeholder=".doc" class="input">
+                                </div>
+
+                                <div class="quick-extensions">
+                                    <label>Hızlı Seçim:</label>
+                                    <div class="extension-tags">
+                                        <span class="tag" data-ext=".jpg">.jpg</span>
+                                        <span class="tag" data-ext=".png">.png</span>
+                                        <span class="tag" data-ext=".pdf">.pdf</span>
+                                        <span class="tag" data-ext=".doc">.doc</span>
+                                        <span class="tag" data-ext=".txt">.txt</span>
+                                        <span class="tag" data-ext=".mp4">.mp4</span>
+                                        <span class="tag" data-ext=".mp3">.mp3</span>
+                                    </div>
+                                </div>
+
+                                <div class="checkbox-group">
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="case-sensitive">
+                                        <span class="checkmark"></span>
+                                        Büyük/küçük harf duyarlı
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- REGEX Mode Settings -->
+                    <div class="col-md-6" id="regex-settings" style="display: none;">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-code"></i> REGEX Ayarları</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="regex-pattern">Arama Deseni (REGEX)</label>
+                                    <input type="text" id="regex-pattern" placeholder="(.+)\.txt$" class="input font-mono">
+                                    <small class="help-text">Örn: (.+)\.txt$ - tüm .txt dosyaları</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="replace-pattern">Değiştirme Deseni</label>
+                                    <input type="text" id="replace-pattern" placeholder="$1.doc" class="input font-mono">
+                                    <small class="help-text">Örn: $1.doc - uzantıyı .doc yap</small>
+                                </div>
+
+                                <div class="regex-examples">
+                                    <label>Örnek Desenler:</label>
+                                    <div class="example-tags">
+                                        <span class="example-tag" data-pattern="^(.+)\.txt$" data-replace="$1.doc">txt → doc</span>
+                                        <span class="example-tag" data-pattern="^IMG_(.+)$" data-replace="Foto_$1">IMG_ → Foto_</span>
+                                        <span class="example-tag" data-pattern="^(.+)_old(.+)$" data-replace="$1_new$2">_old → _new</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template Mode Settings -->
+                    <div class="col-md-6" id="template-settings" style="display: none;">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-magic"></i> Şablon Ayarları</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="naming-template">İsimlendirme Şablonu</label>
+                                    <input type="text" id="naming-template" placeholder="{name}_{counter}{ext}" class="input font-mono">
+                                    <small class="help-text">Değişkenler: {name} {counter} {index} {date} {size} {ext}</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="start-index">Başlangıç Sayısı</label>
+                                    <input type="number" id="start-index" value="1" min="0" class="input">
+                                </div>
+
+                                <div class="template-examples">
+                                    <label>Örnek Şablonlar:</label>
+                                    <div class="example-tags">
+                                        <span class="template-tag" data-template="{name}_{counter}{ext}">dosya_1.jpg</span>
+                                        <span class="template-tag" data-template="IMG_{date}_{index}{ext}">IMG_2024-01-01_1.jpg</span>
+                                        <span class="template-tag" data-template="{year}-{month}-{day}_{name}{ext}">2024-01-01_dosya.jpg</span>
+                                    </div>
+                                </div>
+
+                                <button id="test-template" class="btn btn-secondary">
+                                    <i class="fas fa-flask"></i> Şablonu Test Et
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Filters -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-filter"></i> Gelişmiş Filtreler</h3>
+                                <button id="toggle-filters" class="btn btn-sm btn-outline">
+                                    <i class="fas fa-chevron-down"></i> Göster/Gizle
+                                </button>
+                            </div>
+                            <div class="card-body collapse" id="filter-content">
+                                <div class="form-group">
+                                    <label>Dosya Boyutu</label>
+                                    <div class="size-filter">
+                                        <input type="number" id="min-size" placeholder="Min (KB)" class="input input-sm">
+                                        <span>-</span>
+                                        <input type="number" id="max-size" placeholder="Max (KB)" class="input input-sm">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Tarih Aralığı</label>
+                                    <div class="date-filter">
+                                        <input type="date" id="date-from" class="input input-sm">
+                                        <span>-</span>
+                                        <input type="date" id="date-to" class="input input-sm">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="name-pattern">Dosya Adı Deseni</label>
+                                    <input type="text" id="name-pattern" placeholder="*.jpg veya regex" class="input">
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="pattern-regex">
+                                        <span class="checkmark"></span>
+                                        REGEX kullan
+                                    </label>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Sıralama</label>
+                                    <div class="sort-options">
+                                        <select id="sort-by" class="input">
+                                            <option value="name">İsme göre</option>
+                                            <option value="size">Boyuta göre</option>
+                                            <option value="date">Tarihe göre</option>
+                                        </select>
+                                        <label class="checkbox">
+                                            <input type="checkbox" id="sort-desc">
+                                            <span class="checkmark"></span>
+                                            Azalan
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="checkbox-group">
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="include-hidden">
+                                        <span class="checkmark"></span>
+                                        Gizli dosyaları dahil et
+                                    </label>
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="include-subfolders">
+                                        <span class="checkmark"></span>
+                                        Alt klasörleri dahil et
+                                    </label>
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="create-backup">
+                                        <span class="checkmark"></span>
+                                        Yedek oluştur
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-group">
+                    <button id="preview-changes" class="btn btn-primary btn-large">
+                        <i class="fas fa-eye"></i> Değişiklikleri Önizle
+                    </button>
+                    <button id="back-to-folder" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Geri
+                    </button>
+                </div>
+            </section>
+
+            <!-- Step 3: Preview & Process -->
+            <section id="step-3" class="step-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-eye"></i> Önizleme</h2>
+                        <div class="preview-stats" id="preview-stats"></div>
+                    </div>
+                    <div class="card-body">
+                        <div id="preview-content" class="preview-content">
+                            <!-- Preview will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-group">
+                    <button id="process-files" class="btn btn-primary btn-large" disabled>
+                        <i class="fas fa-play"></i> İşlemi Başlat
+                    </button>
+                    <button id="back-to-settings" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Ayarlara Dön
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Results Modal -->
+        <div id="results-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-check-circle"></i> İşlem Sonucu</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="results-content">
+                        <!-- Results will be populated here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="export-results" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Sonuçları Dışa Aktar
+                    </button>
+                    <button class="modal-close btn btn-primary">Tamam</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template Test Modal -->
+        <div id="template-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-flask"></i> Şablon Test Sonucu</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="template-results">
+                        <!-- Template test results will be populated here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-close btn btn-primary">Tamam</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Modal -->
+        <div id="help-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-question-circle"></i> Yardım & Kılavuz</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="help-content">
+                        <div class="help-section">
+                            <h3><i class="fas fa-file-alt"></i> Uzantı Değiştirme</h3>
+                            <p>Belirli uzantıdaki tüm dosyaların uzantısını değiştirmenizi sağlar.</p>
+                            <ul>
+                                <li>Mevcut uzantı: <code>.txt</code></li>
+                                <li>Yeni uzantı: <code>.doc</code></li>
+                                <li>Sonuç: <code>dosya.txt</code> → <code>dosya.doc</code></li>
+                            </ul>
+                        </div>
+
+                        <div class="help-section">
+                            <h3><i class="fas fa-code"></i> REGEX Kullanımı</h3>
+                            <p>Düzenli ifadeler ile karmaşık arama ve değiştirme işlemleri yapabilirsiniz.</p>
+                            <ul>
+                                <li>Arama: <code>^(.+)\.txt$</code></li>
+                                <li>Değiştir: <code>$1.doc</code></li>
+                                <li>Sonuç: <code>dosya.txt</code> → <code>dosya.doc</code></li>
+                            </ul>
+                        </div>
+
+                        <div class="help-section">
+                            <h3><i class="fas fa-magic"></i> Şablon Değişkenleri</h3>
+                            <p>Dosya isimlendirmede kullanabileceğiniz değişkenler:</p>
+                            <ul>
+                                <li><code>{name}</code> - Orijinal dosya adı (uzantısız)</li>
+                                <li><code>{counter}</code> - Artan sayı (1, 2, 3...)</li>
+                                <li><code>{index}</code> - Liste sırası</li>
+                                <li><code>{ext}</code> - Dosya uzantısı</li>
+                                <li><code>{date}</code> - Dosya tarihi (YYYY-MM-DD)</li>
+                                <li><code>{time}</code> - Dosya saati (HH-MM-SS)</li>
+                                <li><code>{year}</code> - Yıl</li>
+                                <li><code>{month}</code> - Ay</li>
+                                <li><code>{day}</code> - Gün</li>
+                                <li><code>{size}</code> - Dosya boyutu (byte)</li>
+                            </ul>
+                        </div>
+
+                        <div class="help-section">
+                            <h3><i class="fas fa-keyboard"></i> Klavye Kısayolları</h3>
+                            <ul>
+                                <li><kbd>Ctrl + Enter</kbd> - İşlemi başlat</li>
+                                <li><kbd>F1</kbd> - Yardımı aç</li>
+                                <li><kbd>Escape</kbd> - Modal'ları kapat</li>
+                                <li><kbd>Ctrl + D</kbd> - Koyu tema</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-close btn btn-primary">Anladım</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <div class="loading-text">İşlem yapılıyor...</div>
+                <div class="loading-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/js/app.js"></script>
+</body>
+</html> 
