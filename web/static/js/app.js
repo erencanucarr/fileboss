@@ -1122,6 +1122,140 @@ FilebossApp.prototype.updateStaticTexts = function() {
         stepLabels[1].textContent = this.t('steps.step2', 'Ayarları Yapılandır');
         stepLabels[2].textContent = this.t('steps.step3', 'Önizleme & İşle');
     }
+    
+    // Folder selection section
+    const folderTitle = document.getElementById('folder-title');
+    if (folderTitle) {
+        folderTitle.innerHTML = `<i class="fas fa-folder-open"></i> ${this.t('folderSelection.title', 'Klasör Seçimi')}`;
+    }
+    
+    // Drop zone texts
+    const dropTitle = document.getElementById('drop-zone-title');
+    if (dropTitle) {
+        dropTitle.textContent = this.t('folderSelection.dropZone.title', 'Klasörü buraya sürükleyin');
+    }
+    
+    const dropSubtitle = document.getElementById('drop-zone-subtitle');
+    if (dropSubtitle) {
+        dropSubtitle.textContent = this.t('folderSelection.dropZone.subtitle', 'veya aşağıdan manuel olarak yol girin');
+    }
+    
+    // Folder description
+    const folderDesc = document.querySelector('.step-description');
+    if (folderDesc) {
+        folderDesc.textContent = this.t('folderSelection.description', 'İşlem yapmak istediğiniz klasörü seçin');
+    }
+    
+    // Section titles
+    const extensionTitle = document.getElementById('extension-settings-title');
+    if (extensionTitle) {
+        extensionTitle.innerHTML = `<i class="fas fa-file-alt"></i> ${this.t('extensionSettings.title', 'Uzantı Ayarları')}`;
+    }
+    
+    const regexTitle = document.getElementById('regex-settings-title');
+    if (regexTitle) {
+        regexTitle.innerHTML = `<i class="fas fa-code"></i> ${this.t('regexSettings.title', 'REGEX Ayarları')}`;
+    }
+    
+    const templateTitle = document.getElementById('template-settings-title');
+    if (templateTitle) {
+        templateTitle.innerHTML = `<i class="fas fa-magic"></i> ${this.t('templateSettings.title', 'Şablon Ayarları')}`;
+    }
+    
+    const filtersTitle = document.getElementById('filters-title');
+    if (filtersTitle) {
+        filtersTitle.innerHTML = `<i class="fas fa-filter"></i> ${this.t('filters.title', 'Gelişmiş Filtreler')}`;
+    }
+    
+    // Form labels
+    const oldExtLabel = document.getElementById('old-extension-label');
+    if (oldExtLabel) {
+        oldExtLabel.textContent = this.t('extensionSettings.oldExtension', 'Mevcut Uzantı');
+    }
+    
+    const newExtLabel = document.getElementById('new-extension-label');
+    if (newExtLabel) {
+        newExtLabel.textContent = this.t('extensionSettings.newExtension', 'Yeni Uzantı');
+    }
+    
+    const quickSelLabel = document.getElementById('quick-selection-label');
+    if (quickSelLabel) {
+        quickSelLabel.textContent = this.t('extensionSettings.quickSelection', 'Hızlı Seçim:');
+    }
+    
+    const caseSensitiveLabel = document.getElementById('case-sensitive-label');
+    if (caseSensitiveLabel) {
+        caseSensitiveLabel.textContent = this.t('extensionSettings.caseSensitive', 'Büyük/küçük harf duyarlı');
+    }
+    
+    // Filter labels
+    const fileSizeLabel = document.getElementById('file-size-label');
+    if (fileSizeLabel) {
+        fileSizeLabel.textContent = this.t('filters.fileSize', 'Dosya Boyutu');
+    }
+    
+    const dateRangeLabel = document.getElementById('date-range-label');
+    if (dateRangeLabel) {
+        dateRangeLabel.textContent = this.t('filters.dateRange', 'Tarih Aralığı');
+    }
+    
+    const namePatternLabel = document.getElementById('name-pattern-label');
+    if (namePatternLabel) {
+        namePatternLabel.textContent = this.t('filters.namePattern', 'Dosya Adı Deseni');
+    }
+    
+    const useRegexLabel = document.getElementById('use-regex-label');
+    if (useRegexLabel) {
+        useRegexLabel.textContent = this.t('filters.useRegex', 'REGEX kullan');
+    }
+    
+    const sortingLabel = document.getElementById('sorting-label');
+    if (sortingLabel) {
+        sortingLabel.textContent = this.t('filters.sorting', 'Sıralama');
+    }
+    
+    const sortDescLabel = document.getElementById('sort-desc-label');
+    if (sortDescLabel) {
+        sortDescLabel.textContent = this.t('filters.descending', 'Azalan');
+    }
+    
+    // Checkbox labels
+    const includeHiddenLabel = document.getElementById('include-hidden-label');
+    if (includeHiddenLabel) {
+        includeHiddenLabel.textContent = this.t('filters.includeHidden', 'Gizli dosyaları dahil et');
+    }
+    
+    const includeSubfoldersLabel = document.getElementById('include-subfolders-label');
+    if (includeSubfoldersLabel) {
+        includeSubfoldersLabel.textContent = this.t('filters.includeSubfolders', 'Alt klasörleri dahil et');
+    }
+    
+    const createBackupLabel = document.getElementById('create-backup-label');
+    if (createBackupLabel) {
+        createBackupLabel.textContent = this.t('filters.createBackup', 'Yedek oluştur');
+    }
+    
+    // Toggle filters text
+    const toggleFiltersText = document.getElementById('toggle-filters-text');
+    if (toggleFiltersText) {
+        toggleFiltersText.textContent = this.t('filters.toggle', 'Göster/Gizle');
+    }
+    
+    // Sort options
+    const sortNameOption = document.getElementById('sort-name-option');
+    if (sortNameOption) {
+        sortNameOption.textContent = this.t('filters.sortBy.name', 'İsme göre');
+    }
+    
+    const sortSizeOption = document.getElementById('sort-size-option');
+    if (sortSizeOption) {
+        sortSizeOption.textContent = this.t('filters.sortBy.size', 'Boyuta göre');
+    }
+    
+    const sortDateOption = document.getElementById('sort-date-option');
+    if (sortDateOption) {
+        sortDateOption.textContent = this.t('filters.sortBy.date', 'Tarihe göre');
+    }
 };
 
 FilebossApp.prototype.updateButtons = function() {
@@ -1143,6 +1277,14 @@ FilebossApp.prototype.updateButtons = function() {
             element.innerHTML = iconHtml + this.t(key, element.textContent.replace(/^.*?\s/, ''));
         }
     });
+    
+    // Browse button
+    const browseBtn = document.querySelector('.browse-btn');
+    if (browseBtn) {
+        const icon = browseBtn.querySelector('i');
+        const iconHtml = icon ? icon.outerHTML + ' ' : '';
+        browseBtn.innerHTML = iconHtml + this.t('folderSelection.input.browse', 'Gözat');
+    }
 };
 
 FilebossApp.prototype.updateLabels = function() {
@@ -1185,10 +1327,9 @@ FilebossApp.prototype.updateLabels = function() {
 FilebossApp.prototype.updatePlaceholders = function() {
     const placeholderMappings = {
         'folder-path': 'folderSelection.input.placeholder',
-        'old-extension': 'extensionSettings.oldExtension',
-        'new-extension': 'extensionSettings.newExtension',
-        'regex-pattern': 'regexSettings.searchPatternHelp',
-        'replace-pattern': 'regexSettings.replacePatternHelp'
+        'min-size': 'filters.minSize',
+        'max-size': 'filters.maxSize',
+        'name-pattern': 'filters.namePatternPlaceholder'
     };
     
     Object.entries(placeholderMappings).forEach(([id, key]) => {
@@ -1197,6 +1338,17 @@ FilebossApp.prototype.updatePlaceholders = function() {
             element.placeholder = this.t(key, element.placeholder);
         }
     });
+    
+    // Special handling for size inputs
+    const minSizeInput = document.getElementById('min-size');
+    if (minSizeInput) {
+        minSizeInput.placeholder = 'Min (KB)';
+    }
+    
+    const maxSizeInput = document.getElementById('max-size');
+    if (maxSizeInput) {
+        maxSizeInput.placeholder = 'Max (KB)';
+    }
 };
 
 // Initialize the app when DOM is loaded

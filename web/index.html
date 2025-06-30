@@ -61,15 +61,15 @@
             <section id="step-1" class="step-section active">
                 <div class="card">
                     <div class="card-header">
-                        <h2><i class="fas fa-folder-open"></i> Klasör Seçimi</h2>
-                        <p>İşlem yapmak istediğiniz klasörü seçin</p>
+                                        <h2 id="folder-title"><i class="fas fa-folder-open"></i> Klasör Seçimi</h2>
+                <p class="step-description">İşlem yapmak istediğiniz klasörü seçin</p>
                     </div>
                     <div class="card-body">
                         <div id="drop-zone" class="drop-zone">
                             <div class="drop-zone-content">
                                 <i class="fas fa-cloud-upload-alt"></i>
-                                <h3>Klasörü buraya sürükleyin</h3>
-                                <p>veya aşağıdan manuel olarak yol girin</p>
+                                <h3 id="drop-zone-title">Klasörü buraya sürükleyin</h3>
+                                <p id="drop-zone-subtitle">veya aşağıdan manuel olarak yol girin</p>
                             </div>
                         </div>
                         
@@ -124,21 +124,21 @@
                     <div class="col-md-6" id="extension-settings">
                         <div class="card">
                             <div class="card-header">
-                                <h3><i class="fas fa-file-alt"></i> Uzantı Ayarları</h3>
+                                <h3 id="extension-settings-title"><i class="fas fa-file-alt"></i> Uzantı Ayarları</h3>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="old-extension">Mevcut Uzantı</label>
+                                    <label for="old-extension" id="old-extension-label">Mevcut Uzantı</label>
                                     <input type="text" id="old-extension" placeholder=".txt" class="input">
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="new-extension">Yeni Uzantı</label>
+                                    <label for="new-extension" id="new-extension-label">Yeni Uzantı</label>
                                     <input type="text" id="new-extension" placeholder=".doc" class="input">
                                 </div>
 
                                 <div class="quick-extensions">
-                                    <label>Hızlı Seçim:</label>
+                                    <label id="quick-selection-label">Hızlı Seçim:</label>
                                     <div class="extension-tags">
                                         <span class="tag" data-ext=".jpg">.jpg</span>
                                         <span class="tag" data-ext=".png">.png</span>
@@ -154,7 +154,7 @@
                                     <label class="checkbox">
                                         <input type="checkbox" id="case-sensitive">
                                         <span class="checkmark"></span>
-                                        Büyük/küçük harf duyarlı
+                                        <span id="case-sensitive-label">Büyük/küçük harf duyarlı</span>
                                     </label>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                     <div class="col-md-6" id="regex-settings" style="display: none;">
                         <div class="card">
                             <div class="card-header">
-                                <h3><i class="fas fa-code"></i> REGEX Ayarları</h3>
+                                <h3 id="regex-settings-title"><i class="fas fa-code"></i> REGEX Ayarları</h3>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
@@ -196,7 +196,7 @@
                     <div class="col-md-6" id="template-settings" style="display: none;">
                         <div class="card">
                             <div class="card-header">
-                                <h3><i class="fas fa-magic"></i> Şablon Ayarları</h3>
+                                <h3 id="template-settings-title"><i class="fas fa-magic"></i> Şablon Ayarları</h3>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
@@ -229,15 +229,15 @@
                     <!-- Advanced Filters -->
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-header">
-                                <h3><i class="fas fa-filter"></i> Gelişmiş Filtreler</h3>
+                                                            <div class="card-header">
+                                <h3 id="filters-title"><i class="fas fa-filter"></i> Gelişmiş Filtreler</h3>
                                 <button id="toggle-filters" class="btn btn-sm btn-outline">
-                                    <i class="fas fa-chevron-down"></i> Göster/Gizle
+                                    <i class="fas fa-chevron-down"></i> <span id="toggle-filters-text">Göster/Gizle</span>
                                 </button>
                             </div>
                             <div class="card-body collapse" id="filter-content">
                                 <div class="form-group">
-                                    <label>Dosya Boyutu</label>
+                                    <label id="file-size-label">Dosya Boyutu</label>
                                     <div class="size-filter">
                                         <input type="number" id="min-size" placeholder="Min (KB)" class="input input-sm">
                                         <span>-</span>
@@ -246,7 +246,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Tarih Aralığı</label>
+                                    <label id="date-range-label">Tarih Aralığı</label>
                                     <div class="date-filter">
                                         <input type="date" id="date-from" class="input input-sm">
                                         <span>-</span>
@@ -255,27 +255,27 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="name-pattern">Dosya Adı Deseni</label>
+                                    <label for="name-pattern" id="name-pattern-label">Dosya Adı Deseni</label>
                                     <input type="text" id="name-pattern" placeholder="*.jpg veya regex" class="input">
                                     <label class="checkbox">
                                         <input type="checkbox" id="pattern-regex">
                                         <span class="checkmark"></span>
-                                        REGEX kullan
+                                        <span id="use-regex-label">REGEX kullan</span>
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Sıralama</label>
+                                    <label id="sorting-label">Sıralama</label>
                                     <div class="sort-options">
                                         <select id="sort-by" class="input">
-                                            <option value="name">İsme göre</option>
-                                            <option value="size">Boyuta göre</option>
-                                            <option value="date">Tarihe göre</option>
+                                            <option value="name" id="sort-name-option">İsme göre</option>
+                                            <option value="size" id="sort-size-option">Boyuta göre</option>
+                                            <option value="date" id="sort-date-option">Tarihe göre</option>
                                         </select>
                                         <label class="checkbox">
                                             <input type="checkbox" id="sort-desc">
                                             <span class="checkmark"></span>
-                                            Azalan
+                                            <span id="sort-desc-label">Azalan</span>
                                         </label>
                                     </div>
                                 </div>
@@ -284,17 +284,17 @@
                                     <label class="checkbox">
                                         <input type="checkbox" id="include-hidden">
                                         <span class="checkmark"></span>
-                                        Gizli dosyaları dahil et
+                                        <span id="include-hidden-label">Gizli dosyaları dahil et</span>
                                     </label>
                                     <label class="checkbox">
                                         <input type="checkbox" id="include-subfolders">
                                         <span class="checkmark"></span>
-                                        Alt klasörleri dahil et
+                                        <span id="include-subfolders-label">Alt klasörleri dahil et</span>
                                     </label>
                                     <label class="checkbox">
                                         <input type="checkbox" id="create-backup">
                                         <span class="checkmark"></span>
-                                        Yedek oluştur
+                                        <span id="create-backup-label">Yedek oluştur</span>
                                     </label>
                                 </div>
                             </div>
